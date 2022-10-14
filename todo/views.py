@@ -16,5 +16,13 @@ def AddTodo(request):
 # Delete Todo:
 
 # Edit Todo:
-
+def EditTodo(resquest, item_id):
+    all_itens = Item.objects.all()
+    item_id_edit = Item.objects.get(id=item_id)
+    return render(request, 'todolist.html', {'edit_item': item_to_edit, 'all_itens': all_itens})
 # Update Todo Item:
+def UpdateTodoItem(request, item_id):
+    item_to_update = Item.objects.get(id=item_id)
+    item_to_update.content = request.POST['content']
+    item_to_update.save()
+    return HttpResponseRedirect('/')
