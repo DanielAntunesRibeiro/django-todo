@@ -14,6 +14,10 @@ def AddTodo(request):
     return HttpResponseRedirect('/')
 
 # Delete Todo:
+def DeleteTodo(_, item_id):
+    item_to_delete = Item.objects.get(id=item_id)
+    item_to_delete.delete()
+    return HttpResponseRedirect('/')
 
 # Edit Todo:
 
